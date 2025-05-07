@@ -90,6 +90,7 @@
               }
             ],
             "styles": [
+              "src/assets/styles/reset.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -97,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "961d2f98-15c9-4111-8746-4858181d70f1"
   }
 }
