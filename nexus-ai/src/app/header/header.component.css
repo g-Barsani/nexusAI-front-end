@@ -1,3 +1,10 @@
-.header {
-    background-color: #3D3D45;
+header {
+    border: solid red;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+

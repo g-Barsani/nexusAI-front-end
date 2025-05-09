@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-body',
   imports: [],
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./body.component.css'] 
 })
 export class BodyComponent {
-
+  
 }
+
