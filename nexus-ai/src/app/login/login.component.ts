@@ -9,6 +9,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private router: Router) {}
+
+  redirectToHeader() {
+    // Here you would typically add your login logic
+    // For now, we'll just redirect to header page
+    this.router.navigate(['/header']);
+  }
 }
 
 

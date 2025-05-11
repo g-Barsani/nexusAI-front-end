@@ -1,2 +1,43 @@
-<p>login works!</p>
-<button>LOGIN</button>
+<body class="d-flex flex-column min-vh-100">
+    <div class="login-container flex-grow-1">
+        <div class="row justify-content-center mt-5">
+            <div id="logo" class="text-center mb-4">
+                <span>
+                    <div id="logo"></div>
+
+                    <h1>NEXUS <span class="highlight">AI</span></h1>
+                </span>
+            </div>
+
+            <div class="col-md-4 col-lg-2">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form class="pt-2 pe-2 ps-2">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary" (click)="redirectToHeader()">Sign In</button>
+                            </div>
+                            <p class="mt-4"><a href="">Forgot password?</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center fixed-bottom mb-4">
+        Criado por Meia Lua Quadrado ®
+    </footer>
+</body>
+
+
+
+
+<!-- <img src="/assets/texture.jpg" alt="Test image" style="width: 200px;"> -->

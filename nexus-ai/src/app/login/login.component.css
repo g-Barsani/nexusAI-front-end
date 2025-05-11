@@ -1,0 +1,88 @@
+.login-container {
+
+}
+
+h1 {
+    color: #ffff;
+    font-weight: bold;
+}
+.highlight {
+    color: #ef7b00; /* Bootstrap primary color */
+
+}
+
+#logo {
+    background-image: url('../assets/logo.png');
+    background-size: cover; 
+      background-position: 0% 50%, center;
+     background-repeat: no-repeat, no-repeat;
+    width: 100px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+}
+
+body {
+  background-image: 
+    linear-gradient(120deg, rgba(234, 234, 234, 0.2), rgba(0, 0, 0, 0.2)),
+    url('../assets/texture.jpg');
+  background-size: 200% 200%, cover;
+  background-position: 0% 50%, center;
+  background-repeat: no-repeat, no-repeat;
+  background-blend-mode: overlay;
+  background-color: #1c1c1f;
+
+  animation: zoomEffect 10s ease-in-out infinite, gradientMove 20s ease infinite;
+}
+
+/* Zoom Effect */
+@keyframes zoomEffect {
+  0%, 100% {
+    background-size: 200% 200%, 100% 100%;
+  }
+  50% {
+    background-size: 200% 200%, 110% 110%;
+  }
+}
+
+/* Gradient Animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%, center;
+  }
+  50% {
+    background-position: 100% 50%, center;
+  }
+  100% {
+    background-position: 0% 50%, center;
+  }
+}
+
+
+
+input::placeholder {
+    color: #999;  /* Lighter gray for placeholder text */
+    opacity: 1;   /* Ensure the placeholder is fully visible */
+}
+
+button {
+    background-color: #29292E; 
+    border: none;
+}
+
+button:hover, button:active {
+    background-color: #ef7b00; /* Bootstrap primary color */
+    color: #fff; /* White text on hover */
+}
+
+a {
+    color: #ef7b00; /* Bootstrap primary color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+footer {
+    color: #a7a7a7;
+    
+}
