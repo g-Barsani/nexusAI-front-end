@@ -1,6 +1,16 @@
+*{
+/* Prevenir usuário de selecionar texto */
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+   user-select: none; /* Standard */
+}
+
 html, body {
   height: 100%;
   margin: 0;
+
+  
 }
 
 body {
