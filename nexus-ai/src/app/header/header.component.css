@@ -1,10 +1,29 @@
 header {
     border: solid red;
 
+    height:5rem;
+
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+
+    align-self: center;
+    text-align: center;
+    vertical-align: center;
+
+    padding: 0 1.5rem;
 }
 
+
+p {
+    /* color: #CCCCCC33;  */
+
+    /* Remove margem padrão que causa problema na hora de alinhas */
+    margin: 0;
+}
+
+img {
+    
+}
 
