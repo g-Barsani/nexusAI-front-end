@@ -1,3 +1,128 @@
 div {
     background-color: cornflowerblue;
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 60px;
+  background-color: #333;
+  color: white;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  padding-top: 60px;
+}
+
+.sidebar.expanded {
+  width: 200px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.sidebar:not(.expanded) ul {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar ul li {
+  padding: 10px 15px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+.hamburger {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 60px;
+  background-color: #333;
+  color: white;
+  overflow-x: hidden;
+  transition: width 0.3s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.sidebar.expanded {
+  width: 200px;
+}
+
+/* Botão de configurações fixo */
+.settings-button {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 60px;
+  transition: width 0.3s;
+  text-align: center;
+  z-index: 1001;
+}
+
+.settings-button.expanded {
+  width: 200px;
+}
+
+.settings-button button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.settings-button .icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.settings-button .label {
+  white-space: nowrap;
+}
+
+.sidebar ul li:last-child {
+   padding: 10px 15px;
+   white-space: nowrap;
+   overflow: hidden;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* subtle white line */
+}

@@ -24,6 +24,10 @@ p {
 }
 
 img {
-    
+  width: 3rem;         /* width of the circle */
+  height: 3rem;        /* height same as width */
+  border-radius: 50%;   /* makes the image circular */
+  object-fit: cover;    /* crops image nicely to fill the circle */
+  border: 2px solid #ccc; /* optional border */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* optional shadow */
 }
-
