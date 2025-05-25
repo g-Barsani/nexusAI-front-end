@@ -1,6 +1,6 @@
 div {
     border: solid green;
-    height:60%;
+    height:100vh;
 
     display: flex;
     flex-direction: column;

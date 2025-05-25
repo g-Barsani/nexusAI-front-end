@@ -9,12 +9,19 @@
     <div class="header">
       <app-header></app-header>
     </div>
-    <div class="body">
+
+    <div class="body" *ngIf="showBody">
       <app-body></app-body>
     </div>
-    <div class="prompt-bar">
-      <app-prompt-bar></app-prompt-bar>
+
+    <div class="chat">
+      <app-chat (firstMessage)="hideBody()"></app-chat>
+      
     </div>
+
+    <!-- <div class="prompt-bar">
+      <app-prompt-bar></app-prompt-bar>
+    </div> -->
   </div>
 </div>
 
