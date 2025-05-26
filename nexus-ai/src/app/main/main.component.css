@@ -28,10 +28,30 @@
   border: 2px solid green;
 }
 
+.body {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.body.hidden {
+  opacity: 0;
+  pointer-events: none; /* Prevent interactions while hidden */
+  max-height: 0;
+}
+
+.chat {
+  flex: 1; /* Take remaining space */
+  overflow: hidden; /* Prevent overflow */
+}
+
 .prompt-bar {
   flex: 0 0 auto;
   background-color: #f0f0f0;
   border: 2px solid blue;
+}
+
+.content {
+  height: 100vh;
 }
 
 

@@ -10,7 +10,7 @@
       <app-header></app-header>
     </div>
 
-    <div class="body" *ngIf="showBody">
+    <div class="body" [class.hidden]="!showBody">
       <app-body></app-body>
     </div>
 
