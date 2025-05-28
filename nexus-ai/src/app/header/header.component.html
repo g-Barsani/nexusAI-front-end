@@ -1,4 +1,13 @@
 <header>
     <p>Modelo IA usado</p>
-    <img src="https://cdn.vectorstock.com/i/500p/97/32/male-profile-silhouette-vector-2139732.jpg" alt="Profile Picture">
+    
+    
+    
+    <div class="profile-wrapper" (click)="toggleProfile()" tabindex="0" (blur)="closeProfile()">
+        <img src="https://cdn.vectorstock.com/i/500p/97/32/male-profile-silhouette-vector-2139732.jpg" alt="Profile Picture">
+    <div class="profile-name" [class.expanded]="isExpanded">
+      <p>Kkk West</p>
+      <p>123456789</p>
+    </div>
+  </div>
 </header>

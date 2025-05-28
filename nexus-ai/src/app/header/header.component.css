@@ -31,3 +31,37 @@ img {
   border: 2px solid #ccc; /* optional border */
   box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* optional shadow */
 }
+
+
+
+
+.profile-wrapper {
+  position: relative; /* for absolute dropdown */
+  cursor: pointer;
+  outline: none; /* Remove focus outline but add your own if needed */
+}
+
+.profile-name {
+  position: absolute;
+  top: 100%; /* right below the image */
+  left: 50%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none; /* disable interactions when hidden */
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  z-index: 10;
+}
+
+.profile-name.expanded {
+  transform: translateX(-100%) scaleY(1);
+  opacity: 1;
+  pointer-events: auto; /* enable interactions when shown */
+}

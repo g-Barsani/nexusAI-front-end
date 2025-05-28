@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css'] 
 })
 export class HeaderComponent {
+  isExpanded = false;
 
+  toggleProfile() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  closeProfile() {
+    this.isExpanded = false;
+  }
 }

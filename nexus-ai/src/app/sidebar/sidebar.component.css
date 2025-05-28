@@ -116,9 +116,31 @@ div {
   white-space: nowrap;
 }
 
+
+.sidebar ul li {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 20px;
+  border-radius: 12px;
+  transition: all 0.18s ease-in-out;
+}
+
+.sidebar ul li:hover {
+  background-color: #646464;
+}
+
 .sidebar ul li:last-child {
    padding: 10px 15px;
    white-space: nowrap;
    overflow: hidden;
+   height: 0;
+   padding: 0;
+   border-radius: 0;
    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* subtle white line */
+}
+
+.gpt, .gemini, .deepseek {
+  width: 2rem;
+  height: auto;
 }
