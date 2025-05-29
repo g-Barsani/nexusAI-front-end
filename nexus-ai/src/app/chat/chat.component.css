@@ -1,7 +1,6 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
   height: 100%;
   padding: 16px;
   background-color: #f3f4f6;
@@ -37,11 +36,17 @@
 
 .input-container {
   display: flex;
+  justify-content: center;
   gap: 8px;
 }
 
 input {
-  flex: 1;
+  /* flex: 1; */
+  width: 60vw;
+  height:auto;
+  display: flex;
+  
+  align-self: center;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -53,4 +58,50 @@ button {
   color: white;
   border: none;
   border-radius: 8px;
+}
+
+img {
+  width: 2rem;
+  height: auto;
+}
+
+.user img {
+  height: 0;
+  width: 0;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container .top {
+  display: flex;
+  gap: 1rem;
+}
+
+.input-container .bottom {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.help {
+  align-self: flex-end;
+  color: #646464;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.help:hover {
+  background-color: #f7f7f7;
+}
+
+label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
