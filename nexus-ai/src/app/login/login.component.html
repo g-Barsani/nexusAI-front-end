@@ -4,7 +4,7 @@
 
         <div id="logo">
           <div class="logo-icon"></div>
-          <h1>NEXUS <span class="highlight">AI</span></h1>
+          <h1 (click)="irParaLogin()">NEXUS <span class="highlight">AI</span></h1>
         </div>
     
         <div class="card shadow mt-4">
@@ -22,11 +22,11 @@
                 <button type="submit" class="btn btn-primary" (click)="redirectToHome()">Sign In</button>
               </div>
               <p class="mt-4"><a href="">Forgot password?</a></p>
+              <p class="mt-5" (click)="irParaCadastro()">Não possui conta?<a href="javascript:void(0)"> Clique aqui</a></p>
             </form>
           </div>
         </div>
     </div>
-
 </div>
     <footer class="text-center mt-4 mb-3">
     Criado por Meia Lua Quadrado ®

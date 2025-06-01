@@ -1,23 +1,30 @@
 <div class="chat-container">
-  <div class="messages">
-    <div *ngFor="let msg of messages" [ngClass]="msg.role">
-      <img src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png" alt="assistant">
-      {{ msg.content }}
+  <div class="messages" #messagesContainer>
+    <div *ngFor="let msg of messages; let isLast = last" [ngClass]="msg.role">
+      <div *ngIf="isLast" #ultimaMensagem></div>
+
+      <img *ngIf="msg.role === 'assistant'"
+        src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
+        alt="assistant" />
+      <span>{{ msg.content }}</span>
     </div>
   </div>
 
   <div class="input-container">
     <div class="top">
-      <input
-        [(ngModel)]="userInput"
-        (keydown.enter)="sendMessage()"
-        placeholder="Type your message..."
-      />
-      <button (click)="sendMessage()">Send</button>
+      <textarea [(ngModel)]="userInput" (keydown.enter)="sendMessage()" (input)="ajustarTextArea($event)"
+        placeholder="Pergunte alguma coisa..." rows="1"></textarea>
+
+      <button (click)="sendMessage()" [disabled]="!userInput || userInput.trim() === ''">
+        <i class="bi bi-send-fill"></i>
+      </button>
     </div>
+
     <div class="bottom">
-      <label for="" class="trademark">Criado por Meia Lua Quadrado</label>
-      <button class="help">?</button>
+      <label class="trademark">Criado por Meia Lua ao Quadrado ®</label>
+      <button class="help" title="Precisa de ajuda? Clique aqui!">
+        <i class="bi bi-question-circle"></i>
+      </button>
     </div>
   </div>
 </div>

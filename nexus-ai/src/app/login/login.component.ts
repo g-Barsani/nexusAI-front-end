@@ -8,18 +8,24 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   redirectToHome() {
     // Here you would typically add your login logic
     // For now, we'll just redirect to header page
     this.router.navigate(['/home']);
   }
+  irParaCadastro() {
+    this.router.navigate(['/register']);
+  }
+  irParaLogin() {
+    this.router.navigate(['/login']);
+  }
 }
 
 
-  
 
-  // goToHeader() {
-  //   this.router.navigate(['/header']);
-  // }
+
+// goToHeader() {
+//   this.router.navigate(['/header']);
+// }
