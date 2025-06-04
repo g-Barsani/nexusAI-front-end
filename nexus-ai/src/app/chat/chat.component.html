@@ -1,4 +1,4 @@
-<div class="chat-container">
+<div class="chat-container" [class.chat-active]="hasSentFirstMessage">
   <div class="messages" #messagesContainer>
     <div *ngFor="let msg of messages; let isLast = last" [ngClass]="msg.role">
       <div *ngIf="isLast" #ultimaMensagem></div>

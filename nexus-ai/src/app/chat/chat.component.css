@@ -5,6 +5,8 @@
   padding: 1rem;
   background-color: transparent;
   color: white;
+  z-index: 10;
+  position: relative;
 }
 
 .messages {
@@ -140,15 +142,111 @@ textarea {
   flex: 1 1 auto;
   min-height: 40px;
   max-height: 200px;
-  overflow: hidden;
+
+  overflow-y: auto;
+
   resize: none;
   font-size: 1rem;
+  line-height: 1.4;
+  color: #333;
+  background-color: transparent;
+  
   padding: 8px 12px;
+  margin: 0;
   box-sizing: border-box;
-  border-radius: 999px;
+  
+  border-radius: 1200px;
   border: none;
   outline: none;
-  background-color: transparent;
-  color: #333;
-  margin: 0;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* Ativa o fundo e estilo moderno após o envio da primeira mensagem */
+.chat-container.chat-active {
+  background-color: #1e1e1e; /* fundo escuro elegante */
+  padding-top: 2rem;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
+}
+
+/* Animação suave de entrada para as mensagens */
+.chat-container.chat-active .messages {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Fade in e movimento para cima */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajustes nas mensagens */
+/* Cinza estiloso ao ativar chat */
+.chat-container.chat-active {
+  background-color: #2b2b2b; /* cinza grafite */
+  padding-top: 2rem;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
+}
+
+/* Estilo das mensagens */
+.chat-container.chat-active .user {
+  background-color: #ef7b00;
+  color: white;
+}
+
+.chat-container.chat-active .assistant {
+  background-color: #3a3a3a; /* cinza um pouco mais claro para destacar do fundo */
+  border-left: 4px solid #ef7b00;
+}
+
+/* Campo de input modernizado */
+.chat-container.chat-active .input-container .top {
+  background-color: #3a3a3a;
+  border: 2px solid #ef7b00;
+  box-shadow: 0 0 10px rgba(239, 123, 0, 0.2);
+}
+
+/* Botão com destaque alaranjado */
+.chat-container.chat-active button {
+  color: #ef7b00;
+}
+
+/* Botão de ajuda estilizado */
+.chat-container.chat-active .help {
+  background-color: #ef7b00;
+  color: white;
+}
+
+.chat-container.chat-active .help:hover {
+  background-color: #ffa94d;
+}
+.chat-container.chat-active textarea {
+  color: white; /* antes estava #333, quase invisível */
+  background-color: #3a3a3a;
+  border: none;
+  outline: none;
+  resize: none;
+
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  min-height: 40px;
+  max-height: 200px;
+  overflow-y: auto;
+
+  box-shadow: none;
 }

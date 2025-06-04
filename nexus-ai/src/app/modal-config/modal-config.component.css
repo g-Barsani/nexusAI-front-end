@@ -1,0 +1,132 @@
+.custom-modal {
+    max-width: 800px;
+    width: 100vw;
+    max-height: 90vh;
+    margin: auto;
+    background-color: #2e2e36;
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+
+    .modal-header {
+        border-bottom: 1px solid #444;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .modal-title {
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .btn-fechar {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 1rem;
+        }
+    }
+
+    .modal-body {
+        margin-top: 1rem;
+
+        .form-group {
+            margin-bottom: 1.2rem;
+
+            label {
+                display: block;
+                margin-bottom: 0.3rem;
+                color: #ccc;
+            }
+
+            input {
+                width: 100%;
+                padding: 0.6rem;
+                border: none;
+                border-radius: 8px;
+                background-color: #3a3a3f;
+                color: white;
+            }
+
+            input::placeholder {
+                color: #aaa;
+            }
+        }
+    }
+
+    .modal-header {
+        position: relative;
+
+        .icone-perfil {
+            position: absolute;
+            left: 1rem;
+            top: 33%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #ef7b00;
+        }
+
+        .modal-title {
+            margin: 0 auto;
+        }
+
+        .btn-fechar {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #ef4444;
+            cursor: pointer;
+            top: 2%;
+            position: absolute;
+            right: 1rem;
+            transform: translateY(-50%);
+        }
+    }
+
+    .modal-footer.centralizada {
+        justify-content: center;
+        padding-top: 1.5rem;
+
+        .btn-salvar {
+            background-color: #ef7b00;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-top: 1rem;
+        border-top: 1px solid #444;
+        padding-top: 1rem;
+
+        .btn-cancelar {
+            background-color: #6b6b6e;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .btn-salvar {
+            background-color: #ef7b00;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+        }
+    }
+}

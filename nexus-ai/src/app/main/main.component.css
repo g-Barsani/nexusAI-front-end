@@ -18,14 +18,12 @@
 .header {
   flex: 0 0 auto;
   background-color: #f8f8f8;
-  border: 2px solid red;
 }
 
 .body {
   flex: 1 1 auto;
   overflow-y: auto;
   background-color: white;
-  border: 2px solid green;
 }
 
 .body {

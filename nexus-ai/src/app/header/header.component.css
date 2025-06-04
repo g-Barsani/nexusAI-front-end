@@ -1,6 +1,4 @@
 header {
-    border: solid red;
-
     height:5rem;
 
     display: flex;
@@ -63,5 +61,5 @@ img {
 .profile-name.expanded {
   transform: translateX(-100%) scaleY(1);
   opacity: 1;
-  pointer-events: auto; /* enable interactions when shown */
+  pointer-events: auto;
 }

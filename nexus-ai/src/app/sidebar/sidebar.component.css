@@ -1,53 +1,4 @@
-div {
-    background-color: cornflowerblue;
-}
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 60px;
-  background-color: #333;
-  color: white;
-  overflow-x: hidden;
-  transition: width 0.3s ease;
-  padding-top: 60px;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  padding: 15px;
-}
-
-.sidebar ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-  transition: opacity 0.2s ease;
-  opacity: 1;
-}
-
-.sidebar:not(.expanded) ul {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.sidebar ul li {
-  padding: 10px 15px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-
+/* HAMBURGER */
 .hamburger {
   position: fixed;
   top: 10px;
@@ -60,26 +11,98 @@ div {
   cursor: pointer;
 }
 
-/* Sidebar */
+.hamburger i {
+  font-size: 24px;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.hamburger i.rotated {
+  transform: rotate(90deg);
+}
+/* SIDEBAR BASE */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 60px;
-  background-color: #333;
+  background-color: #1a1a1d;
   color: white;
   overflow-x: hidden;
   transition: width 0.3s;
   padding-top: 60px;
   z-index: 1000;
+  box-shadow: 2px 0 10px rgba(239, 123, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+/* EXPANSÃO */
 .sidebar.expanded {
-  width: 25vw;
+  width: 250px;
 }
 
-/* Botão de configurações fixo */
+/* LISTA */
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 20px;
+  border-radius: 12px;
+  transition: background-color 0.2s;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: rgba(239, 123, 0, 0.2);
+}
+
+/* LINKS */
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  gap: 10px;
+}
+
+.sidebar ul li a:hover {
+  color: #ef7b00;
+}
+
+/* ÍCONES */
+.sidebar i {
+  font-size: 1.2rem;
+  color: #ef7b00;
+}
+
+.sidebar:not(.expanded) ul li {
+  justify-content: center;
+  width: 60px;
+  margin: 0 auto 20px;
+  padding: 10px 0;
+}
+
+/* IMAGENS */
+.gpt {
+  width: 2rem;
+  height: auto;
+  margin-left: 10px;
+}
+
+/* CONFIG BUTTON */
 .settings-button {
   position: fixed;
   bottom: 20px;
@@ -91,7 +114,7 @@ div {
 }
 
 .settings-button.expanded {
-  width: 200px;
+  width: 250px;
 }
 
 .settings-button button {
@@ -116,31 +139,15 @@ div {
   white-space: nowrap;
 }
 
-
-.sidebar ul li {
-  display: flex;
-  justify-content: space-between;
-
-  margin: 20px;
-  border-radius: 12px;
-  transition: all 0.18s ease-in-out;
+/* BODY BACKGROUND SUGESTÃO */
+body {
+  background-color: #121214;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.sidebar ul li:hover {
-  background-color: #646464;
+.sidebar i.bi-plus {
+  font-size: 2rem;
 }
-
-.sidebar ul li:last-child {
-   padding: 10px 15px;
-   white-space: nowrap;
-   overflow: hidden;
-   height: 0;
-   padding: 0;
-   border-radius: 0;
-   border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* subtle white line */
-}
-
-.gpt, .gemini, .deepseek {
-  width: 2rem;
-  height: auto;
+.sidebar i.bi-gear-fill {
+  margin-right: 8px;
 }

@@ -1,19 +1,49 @@
+<button class="hamburger" (click)="toggleSidebar()">
+  <i class="bi bi-list" [class.rotated]="isExpanded"></i>
+</button>
+
 <div class="sidebar" [class.expanded]="isExpanded">
   <ul>
-    <li><a href="#">GPT 4o</a> <img class="gpt" src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png" alt="gpt"></li>
-    <li><a href="#">Gemini</a>   <img class="gpt" src="https://static.vecteezy.com/system/resources/previews/055/687/055/non_2x/rectangle-gemini-google-icon-symbol-logo-free-png.png" alt="gemini"></li>
-    <li><a href="#">Deepseek</a> <img class="gpt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s" alt="deepseek"></li>
-    <li></li>
+    <li>
+      <i class="bi bi-plus"></i>
+      <span *ngIf="isExpanded">Nova conversa</span>
+    </li>
 
+
+    <li>
+      <a href="#">
+        <span *ngIf="isExpanded">GPT-4o</span>
+      </a>
+      <img *ngIf="isExpanded" class="gpt" src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
+        alt="gpt">
+    </li>
+
+    <li>
+      <a href="#">
+        <span *ngIf="isExpanded">Gemini</span>
+      </a>
+      <img *ngIf="isExpanded" class="gpt"
+        src="https://static.vecteezy.com/system/resources/previews/055/687/055/non_2x/rectangle-gemini-google-icon-symbol-logo-free-png.png"
+        alt="gemini">
+    </li>
+
+    <li>
+      <a href="#">
+        <span *ngIf="isExpanded">Deepseek</span>
+      </a>
+      <img *ngIf="isExpanded" class="gpt"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s"
+        alt="deepseek">
+    </li>
   </ul>
 
-  <div class="settings-button">
-    <button>
-      <span class="icon">⚙️</span>
+  <div class="settings-button" [class.expanded]="isExpanded">
+    <button (click)="abrirModal();">
+      <i class="bi bi-gear-fill"> </i>
+      <span class="label" *ngIf="isExpanded">Configurações</span>
     </button>
   </div>
 </div>
 
-<button class="hamburger" (click)="toggleSidebar()">
-  ☰
-</button>
+
+<app-modal-config *ngIf="modalAberto" (fechar)="modalAberto = false"></app-modal-config>
