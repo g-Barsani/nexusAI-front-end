@@ -1,8 +1,7 @@
-/* HAMBURGER */
 .hamburger {
   position: fixed;
   top: 10px;
-  left: 10px;
+  left: 20px;
   font-size: 24px;
   background: none;
   border: none;
@@ -20,7 +19,7 @@
 .hamburger i.rotated {
   transform: rotate(90deg);
 }
-/* SIDEBAR BASE */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -39,12 +38,10 @@
   justify-content: space-between;
 }
 
-/* EXPANSÃO */
 .sidebar.expanded {
   width: 250px;
 }
 
-/* LISTA */
 .sidebar ul {
   list-style-type: none;
   padding: 0;
@@ -69,7 +66,6 @@
   background-color: rgba(239, 123, 0, 0.2);
 }
 
-/* LINKS */
 .sidebar ul li a {
   display: flex;
   align-items: center;
@@ -82,7 +78,6 @@
   color: #ef7b00;
 }
 
-/* ÍCONES */
 .sidebar i {
   font-size: 1.2rem;
   color: #ef7b00;
@@ -95,14 +90,12 @@
   padding: 10px 0;
 }
 
-/* IMAGENS */
 .gpt {
   width: 2rem;
   height: auto;
   margin-left: 10px;
 }
 
-/* CONFIG BUTTON */
 .settings-button {
   position: fixed;
   bottom: 20px;
@@ -139,7 +132,6 @@
   white-space: nowrap;
 }
 
-/* BODY BACKGROUND SUGESTÃO */
 body {
   background-color: #121214;
   color: white;
@@ -150,4 +142,132 @@ body {
 }
 .sidebar i.bi-gear-fill {
   margin-right: 8px;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+
+  &.ativo {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 9999;
+  }
+
+  .modal-fade {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    /* pode deixar transparente para permitir clique fechar só na área */
+  }
+
+  .modal-dialog-custom {
+    max-width: 800px;
+    width: 100vw;
+    max-height: 90vh;
+    margin: 0 1rem;
+    z-index: 10000;
+    position: relative;
+  }
+}
+
+.custom-modal {
+  background-color: #2e2e36;
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  overflow-y: auto;
+  max-height: 90vh;
+
+  .modal-header {
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    .icone-perfil {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #ef7b00;
+    }
+
+    .modal-title {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .btn-fechar {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #ef4444;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+  }
+
+  .modal-body {
+    margin-top: 1rem;
+
+    .form-group {
+      margin-bottom: 1.2rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.3rem;
+        color: #ccc;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.6rem;
+        border: none;
+        border-radius: 8px;
+        background-color: #3a3a3f;
+        color: white;
+
+        &::placeholder {
+          color: #aaa;
+        }
+      }
+    }
+  }
+
+  .modal-footer.centralizada {
+    justify-content: center;
+    padding-top: 1.5rem;
+
+    .btn-salvar {
+      background-color: #ef7b00;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+  }
 }

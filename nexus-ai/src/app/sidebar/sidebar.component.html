@@ -9,41 +9,66 @@
       <span *ngIf="isExpanded">Nova conversa</span>
     </li>
 
-
     <li>
       <a href="#">
         <span *ngIf="isExpanded">GPT-4o</span>
       </a>
-      <img *ngIf="isExpanded" class="gpt" src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
-        alt="gpt">
+      <img *ngIf="isExpanded" class="gpt" src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png" alt="gpt">
     </li>
 
     <li>
       <a href="#">
         <span *ngIf="isExpanded">Gemini</span>
       </a>
-      <img *ngIf="isExpanded" class="gpt"
-        src="https://static.vecteezy.com/system/resources/previews/055/687/055/non_2x/rectangle-gemini-google-icon-symbol-logo-free-png.png"
-        alt="gemini">
+      <img *ngIf="isExpanded" class="gpt" src="https://static.vecteezy.com/system/resources/previews/055/687/055/non_2x/rectangle-gemini-google-icon-symbol-logo-free-png.png" alt="gemini">
     </li>
 
     <li>
       <a href="#">
         <span *ngIf="isExpanded">Deepseek</span>
       </a>
-      <img *ngIf="isExpanded" class="gpt"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s"
-        alt="deepseek">
+      <img *ngIf="isExpanded" class="gpt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s" alt="deepseek">
     </li>
   </ul>
 
   <div class="settings-button" [class.expanded]="isExpanded">
-    <button (click)="abrirModal();">
-      <i class="bi bi-gear-fill"> </i>
+    <button (click)="abrirModal()">
+      <i class="bi bi-gear-fill"></i>
       <span class="label" *ngIf="isExpanded">Configurações</span>
     </button>
   </div>
 </div>
 
+<div class="modal-overlay" [class.ativo]="modalAberto" (click)="fecharModal()">
+  <div class="modal-dialog modal-dialog-custom" role="dialog" aria-modal="true" aria-labelledby="modalLabel" (click)="$event.stopPropagation()">
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <div class="icone-perfil">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <h5 class="modal-title" id="modalLabel">NexusAI</h5>
+        <button type="button" class="btn-fechar" aria-label="Fechar modal" (click)="fecharModal()">
+          <i class="bi bi-x-circle"></i>
+        </button>
+      </div>
 
-<app-modal-config *ngIf="modalAberto" (fechar)="modalAberto = false"></app-modal-config>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Digite seu email" />
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" placeholder="Digite sua senha" />
+        </div>
+      </div>
+
+      <div class="modal-footer centralizada">
+        <button class="btn-salvar" (click)="salvar()">
+          <i class="bi bi-floppy"></i> Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

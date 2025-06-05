@@ -2,8 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AfterViewChecked } from '@angular/core';
-
-
+import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 interface ChatMessage {
@@ -16,7 +15,7 @@ interface ChatMessage {
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SidebarComponent],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
@@ -29,6 +28,7 @@ export class ChatComponent implements AfterViewChecked {
   userInput: string = '';
   @Output() firstMessage = new EventEmitter<void>();
   hasSentFirstMessage = false;
+  modalAberto = false;
 
   sendMessage() {
     const trimmed = this.userInput?.trim();
