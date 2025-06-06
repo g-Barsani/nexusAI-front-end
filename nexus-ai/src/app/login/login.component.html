@@ -9,19 +9,18 @@
     
         <div class="card shadow mt-4">
           <div class="card-body">
-            <form class="pt-2 pe-2 ps-2">
+            <form class="pt-2 pe-2 ps-2" (ngSubmit)="login()">
               <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+                <label for="username" class="form-label">Nome de Usuario</label>
+                <input type="text" class="form-control" id="username" [(ngModel)]="usuarioData.username" name="user" placeholder="usuario"  required>
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="usuarioData.password" name="password"  placeholder="senha" required>
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" (click)="redirectToHome()">Sign In</button>
+                <button type="submit" class="btn btn-primary" >Entrar</button>
               </div>
-              <p class="mt-4"><a href="">Forgot password?</a></p>
               <p class="mt-5" (click)="irParaCadastro()">Não possui conta?<a href="javascript:void(0)"> Clique aqui</a></p>
             </form>
           </div>

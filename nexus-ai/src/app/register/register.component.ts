@@ -1,36 +1,52 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-register',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
 
-  nome: string = "";
-  email: string = "";
-  senha: string = "";
+  usuarioData = {
+      username: '',
+      password: '', 
+      email: ''
+    };
+  
+  confirm_password = ''
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
-  onSignUp(event: Event) {
-    event.preventDefault();
+  onSignUp() {
 
-    if (this.nome?.trim() === "" || this.email?.trim() === "" || this.senha?.trim() === "") {
-      alert("Preencha todos os campos seu burro!");
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (this.confirm_password != this.usuarioData.password) {
+      alert("Senha não é igual ao campo de confirmar senha")
 
-    if (!emailRegex.test(this.email)) {
-      alert("Por favor, insira um email válido");
-      return;
-    }
-    alert("Cadastro realizado com sucesso (:");
+    } else {
+        // Chama o método cadastrar do AuthService
+        this.authService.cadastrar(this.usuarioData).subscribe({
+          next: (res) => {
+            console.log('Cadastro OK', res);
 
+            
+            alert("Cadastro realizado com sucesso (:");
+
+            this.irParaLogin();
+          },
+          error: (err) => {
+            alert("Erro ao cadastrar")
+            console.error('Erro ao cadastrar', err);
+            // mostrar toast ou erro pro usuário
+          }
+        });
+    }     
   }
+
+
   irParaLogin(){
-  this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
  }
 }

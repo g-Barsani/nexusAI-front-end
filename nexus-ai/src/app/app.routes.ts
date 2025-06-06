@@ -8,11 +8,12 @@ import { MainComponent } from './main/main.component';
 
 
 import { Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: MainComponent},
-    {path: 'register', component: RegisterComponent},
+    { path: 'home', component: MainComponent, canActivate: [AuthGuard]},
+    { path: 'register', component: RegisterComponent},
 
 
     { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect empty path to login

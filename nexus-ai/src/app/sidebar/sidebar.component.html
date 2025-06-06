@@ -9,7 +9,18 @@
       <span *ngIf="isExpanded">Nova conversa</span>
     </li>
 
-    <li>
+
+    <li *ngFor="let chat of chatSessionList;">
+      <span>
+        <span *ngIf="isExpanded">{{ chat.sessionTitle }}</span>
+      </span>
+      <button type="button" (click)="delete(chat.id!);  $event.stopPropagation()" class="btn d-flex justify-content-center align-items-center" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>  
+
+
+    <!-- <li>
       <a href="#">
         <span *ngIf="isExpanded">GPT-4o</span>
       </a>
@@ -28,7 +39,7 @@
         <span *ngIf="isExpanded">Deepseek</span>
       </a>
       <img *ngIf="isExpanded" class="gpt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s" alt="deepseek">
-    </li>
+    </li> -->
   </ul>
 
   <div class="settings-button" [class.expanded]="isExpanded">

@@ -9,22 +9,22 @@
 
       <div class="card shadow mt-4">
         <div class="card-body">
-          <form class="pt-2 pe-2 ps-2" (submit)="onSignUp($event)">
+          <form class="pt-2 pe-2 ps-2" (ngSubmit)="onSignUp()">
             <div class="mb-3">
-              <label for="name" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="name" placeholder="Seu nome completo" required>
+              <label for="name" class="form-label">Nome de Usuario</label>
+              <input type="text" class="form-control" id="name"  [(ngModel)]="usuarioData.username" name="name" placeholder="User" required>
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+              <label for="email" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="usuarioData.email" name="email" placeholder="E-mail" required>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Senha</label>
-              <input type="password" class="form-control" id="password" placeholder="Senha" required>
+              <input type="password" class="form-control" id="password" [(ngModel)]="usuarioData.password" name="senha" placeholder="Senha" required>
             </div>
             <div class="mb-3">
-              <label for="confirm-password" class="form-label">Confirmar Senha</label>
-              <input type="password" class="form-control" id="confirm-password" placeholder="Confirme a senha" required>
+              <label for="confirm-password" class="form-label">Confirme a Senha</label>
+              <input type="password" class="form-control" id="confirm-password" [(ngModel)]="confirm_password" name="confirm"  placeholder="Confirme a senha" required>
             </div>
             <div class="d-grid gap-2">
               <button type="submit" class="btn btn-primary">Cadastrar</button>

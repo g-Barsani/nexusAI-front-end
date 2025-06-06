@@ -63,3 +63,13 @@ img {
   opacity: 1;
   pointer-events: auto;
 }
+
+button {
+    background-color: #29292E; 
+    border: none;
+}
+
+button:hover, button:active {
+    background-color: #ef7b00; /* Bootstrap primary color */
+    color: #fff; /* White text on hover */
+}
