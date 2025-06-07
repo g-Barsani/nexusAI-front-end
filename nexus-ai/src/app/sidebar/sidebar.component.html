@@ -9,8 +9,7 @@
       <span *ngIf="isExpanded">Nova conversa</span>
     </li>
 
-
-    <li *ngFor="let chat of chatSessionList;">
+    <li *ngFor="let chat of chatSessionList;" (click)="onItemClick(chat.id!)">
       <span>
         <span *ngIf="isExpanded">{{ chat.sessionTitle }}</span>
       </span>
@@ -18,28 +17,6 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </li>  
-
-
-    <!-- <li>
-      <a href="#">
-        <span *ngIf="isExpanded">GPT-4o</span>
-      </a>
-      <img *ngIf="isExpanded" class="gpt" src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png" alt="gpt">
-    </li>
-
-    <li>
-      <a href="#">
-        <span *ngIf="isExpanded">Gemini</span>
-      </a>
-      <img *ngIf="isExpanded" class="gpt" src="https://static.vecteezy.com/system/resources/previews/055/687/055/non_2x/rectangle-gemini-google-icon-symbol-logo-free-png.png" alt="gemini">
-    </li>
-
-    <li>
-      <a href="#">
-        <span *ngIf="isExpanded">Deepseek</span>
-      </a>
-      <img *ngIf="isExpanded" class="gpt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s" alt="deepseek">
-    </li> -->
   </ul>
 
   <div class="settings-button" [class.expanded]="isExpanded">

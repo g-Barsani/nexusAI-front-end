@@ -2,11 +2,22 @@
   <div class="messages" #messagesContainer>
     <div *ngFor="let msg of messages; let isLast = last" [ngClass]="msg.role">
       <div *ngIf="isLast" #ultimaMensagem></div>
+      <ng-container>
+        <img *ngIf="msg.role === 'assistant' && msg.llmName === 'meta-llama/llama-3.3-8b-instruct:free'"
+          src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
+          alt="assistant" />
+        <img *ngIf="msg.role === 'assistant' && msg.llmName === 'deepseek/deepseek-r1-0528-qwen3-8b:free'"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s"
+          alt="assistant" />
+        <img *ngIf="msg.role === 'assistant' && msg.llmName === 'google/gemma-3n-e4b-it:free'"
+          src="https://static.vecteezy.com/system/resources/previews/055/687/055/non_2x/rectangle-gemini-google-icon-symbol-logo-free-png.png"
+          alt="assistant" />
+        <img *ngIf="msg.role === 'assistant' && msg.llmName === 'qwen/qwen3-8b:free'"
+          src="https://unpkg.com/@lobehub/icons-static-png@latest/dark/qwen-color.png"
+          alt="assistant" />
+        <span>{{ msg.content }}</span>
 
-      <img *ngIf="msg.role === 'assistant'"
-        src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
-        alt="assistant" />
-      <span>{{ msg.content }}</span>
+      </ng-container>
     </div>
   </div>
 

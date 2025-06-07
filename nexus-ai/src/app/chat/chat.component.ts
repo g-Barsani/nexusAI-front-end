@@ -4,13 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AfterViewChecked } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-
-interface ChatMessage {
-  role: 'user' | 'assistant';
-  content: string;
-}
-
-
+import { ChatMessage, ChatSessionService } from '../services/chatsession.service';
 
 @Component({
   selector: 'app-chat',
@@ -29,6 +23,9 @@ export class ChatComponent implements AfterViewChecked {
   @Output() firstMessage = new EventEmitter<void>();
   hasSentFirstMessage = false;
   modalAberto = false;
+  chatSessionId?: number
+
+  constructor(private chasessionService: ChatSessionService) {}
 
   sendMessage() {
     const trimmed = this.userInput?.trim();
@@ -75,6 +72,26 @@ export class ChatComponent implements AfterViewChecked {
     }
   }
 
+  getAllChatMessage(id: number) {
+    this.firstMessage.emit()
+    this.chasessionService.getMessageChat(id).subscribe({
+        next: (response) => {
+          this.messages = response
+
+          console.log('Messages: ', this.messages)
+        },
+        error: (err) => {
+          console.log(err)
+        }
+      })
+  }
+
+  ngOnInit() {
+      this.chasessionService.selectedItemId$.subscribe(id => {
+        this.getAllChatMessage(id);
+        this.chatSessionId = id
+      });
+  }
 
 private scrool(): void {
   try {

@@ -33,7 +33,9 @@ export class SidebarComponent {
     }
   }
 
-
+  onItemClick(id: number) {
+    this.chasessionService.selectItem(id); // notifica o outro componente
+  }
 
 
   ngOnInit() {
