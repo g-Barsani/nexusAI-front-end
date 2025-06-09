@@ -33,8 +33,11 @@ export class ChatSessionService {
     getAllChats(){
         return this.http.get<ChatSession[]>(`${this.apiUrl}/list`);
     }
+    createChat(title: string){
+        return this.http.post<ChatSession>(`${this.apiUrl}/insert`, title);
+    }
     
-    getMessageChat(id: number){
+    getMessageChat(id?: number){
         return this.http.get<ChatMessage[]>(`${this.apiUrl}/${id}/messages`);
     }
 

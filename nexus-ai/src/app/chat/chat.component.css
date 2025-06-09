@@ -24,7 +24,7 @@
 
 
 .user, .assistant {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 8px;
   max-width: 70%;
@@ -54,6 +54,15 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
+
+  margin-right: 20px
+}
+.assistant_img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  margin-right: 20px
 }
 
 .user img {
@@ -247,3 +256,7 @@ textarea {
 
   box-shadow: none;
 }
+
+/* select#assistants option[value="teste"]   {
+   background-image:url("https://upload.wikimedia.org/wikipedia/commons/a/ac/Approve_icon.svg");   
+  } */

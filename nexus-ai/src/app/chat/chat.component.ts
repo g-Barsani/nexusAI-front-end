@@ -5,6 +5,7 @@ import { AfterViewChecked } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ChatMessage, ChatSessionService } from '../services/chatsession.service';
+import { ChatService, ChatBody } from '../services/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -25,36 +26,65 @@ export class ChatComponent implements AfterViewChecked {
   modalAberto = false;
   chatSessionId?: number
 
-  constructor(private chasessionService: ChatSessionService) {}
+  chatMsg = {
+    content: '',
+      model: ''
+  }
+
+  selectedValue: string = 'deepseek/deepseek-r1-0528-qwen3-8b:free';
+
+  constructor(private chasessionService: ChatSessionService, private chatService: ChatService) {}
 
   sendMessage() {
     const trimmed = this.userInput?.trim();
     if (!trimmed) return;
 
     if (!this.hasSentFirstMessage) {
+      this.chasessionService.createChat("Novo Conversa").subscribe({
+        next: (resp) => {
+              this.chatSessionId = resp.id
+
+              this.chatMsg.model = this.selectedValue
+              this.chatMsg.content = trimmed
+
+              this.chatService.chatSimple(this.chatMsg, this.chatSessionId).subscribe({
+                next: () => {
+                    this.getAllChatMessage(this.chatSessionId)
+                },
+                error: (err) => {
+                  alert( "ChatSessionId: " + this.chatSessionId +"\n" + "ChatMsg: " + this.chatMsg.content  +"\n" + err)
+                }
+              })
+
+        },
+        error: (err) => {
+          alert("Erro ao criar nova conversa: " + err)
+        }
+      })
+
       this.hasSentFirstMessage = true;
       console.log('Emitting firstMessage event');
       this.firstMessage.emit();
     }
 
-    const userMsg: ChatMessage = { role: 'user', content: trimmed };
+    // const userMsg: ChatMessage = { role: 'user', content: trimmed };
 
-    const aiMsg: ChatMessage = {
-      role: 'assistant',
-      content: 'Test message'
-    };
+    // const aiMsg: ChatMessage = {
+    //   role: 'assistant',
+    //   content: 'Test message'
+    // };
 
-    this.messages.push(userMsg, aiMsg);
-    this.rolar = true;
+    // this.messages.push(userMsg, aiMsg);
+    // this.rolar = true;
 
     this.userInput = '';
 
-    setTimeout(() => {
-      const textarea = document.querySelector("textarea");
-      if (textarea) {
-        textarea.style.height = '40px';
-      }
-    })
+    // setTimeout(() => {
+    //   const textarea = document.querySelector("textarea");
+    //   if (textarea) {
+    //     textarea.style.height = '40px';
+    //   }
+    // })
   }
 
   ajustarTextArea(event: Event) {
@@ -72,7 +102,7 @@ export class ChatComponent implements AfterViewChecked {
     }
   }
 
-  getAllChatMessage(id: number) {
+  getAllChatMessage(id?: number) {
     this.firstMessage.emit()
     this.chasessionService.getMessageChat(id).subscribe({
         next: (response) => {

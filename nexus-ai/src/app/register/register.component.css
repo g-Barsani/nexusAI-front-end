@@ -133,11 +133,11 @@ footer {
 
 
 .login-content {
-  flex-grow: 1;
+  /* flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100%; */
 }
 
 .main-content {

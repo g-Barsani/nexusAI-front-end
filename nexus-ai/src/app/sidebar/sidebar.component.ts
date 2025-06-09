@@ -1,5 +1,6 @@
 import { Component, Output } from '@angular/core';
 import { HostListener, ElementRef } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EventEmitter } from '@angular/core';
 import { ChatSession, ChatSessionService } from '../services/chatsession.service';
@@ -10,7 +11,7 @@ import { error } from 'console';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
@@ -18,10 +19,10 @@ export class SidebarComponent {
   @Output() fechar = new EventEmitter<void>();
   isExpanded = false;
   modalAberto = false;
-
+  modalAberto2 = false;
+  newTitle: string = '';
 
   chatSessionList: Array<ChatSession> = [];
-
 
   constructor(private _eref: ElementRef, private chasessionService: ChatSessionService) { }
 
@@ -75,20 +76,44 @@ export class SidebarComponent {
   
   abrirModal() {
     this.modalAberto = true;
-    console.log("Modal aberto chifrudo do caralho");
+    console.log("Modal aberto :)");
   }
+  
+    fecharModal() {
+      this.modalAberto = false;
+    }
+
+  abrirModal2() {
+    this.modalAberto2 = true;
+    console.log("Modal 2 aberto :)");
+  }
+  
+    fecharModal2() {
+      this.modalAberto2 = false;
+    }
 
   toggleSidebar() {
     this.isExpanded = !this.isExpanded;
   }
 
-  fecharModal() {
-    this.modalAberto = false;
-  }
-
   salvar() {
     alert("Informações salvas com sucesso!");
     this.modalAberto = false;
+  }
+
+  createChat() {
+
+    this.chasessionService.createChat(this.newTitle).subscribe({
+      next: () => {
+        alert("Informações salvas com sucesso!");
+        this.modalAberto2 = false;
+        this.getAllUserChat();
+      },
+      error: (err) => {
+        alert("Erro ao cadastrar: " + err);
+      }
+    })
+    
   }
 }
 

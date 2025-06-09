@@ -23,6 +23,37 @@
 
   <div class="input-container">
     <div class="top">
+
+      <div class="d-flex align-items-center"> 
+        <ng-container>
+          <img class="assistant_img" *ngIf="selectedValue === 'meta-llama/llama-3.3-8b-instruct:free'"
+            src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
+            alt="assistant" />
+          <img class="assistant_img" *ngIf="selectedValue === 'deepseek/deepseek-r1-0528-qwen3-8b:free'"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s"
+            alt="assistant" />
+          <img class="assistant_img" *ngIf="selectedValue === 'google/gemma-3n-e4b-it:free'"
+            src="https://static.vecteezy.com/system/resources/previews/055/687/055/non_2x/rectangle-gemini-google-icon-symbol-logo-free-png.png"
+            alt="assistant" />
+          <img class="assistant_img" *ngIf="selectedValue === 'qwen/qwen3-8b:free'"
+            src="https://unpkg.com/@lobehub/icons-static-png@latest/dark/qwen-color.png"
+            alt="assistant" />
+        </ng-container>
+
+
+        <select class="form-select" [(ngModel)]="selectedValue" id="assistants">
+          <option value="deepseek/deepseek-r1-0528-qwen3-8b:free" >Deepseek</option>
+          <option value="google/gemma-3n-e4b-it:free" >Gemma</option>
+          <option value="meta-llama/llama-3.3-8b-instruct:free" >LLama</option>
+          <option value="qwen/qwen3-8b:free" >Qwen</option>
+        </select>
+      </div>
+
+
+
+
+
+
       <textarea [(ngModel)]="userInput" (keydown.enter)="sendMessage()" (input)="ajustarTextArea($event)"
         placeholder="Pergunte alguma coisa..." rows="1"></textarea>
 

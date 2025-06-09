@@ -4,8 +4,9 @@
 
 <div class="sidebar" [class.expanded]="isExpanded">
   <ul>
-    <li>
-      <i class="bi bi-plus"></i>
+    <li (click)="abrirModal2()">
+      <i class="bi bi-plus" [class.expanded]="isExpanded">
+      </i>
       <span *ngIf="isExpanded">Nova conversa</span>
     </li>
 
@@ -57,6 +58,33 @@
           <i class="bi bi-floppy"></i> Salvar
         </button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" [class.ativo]="modalAberto2" (click)="fecharModal2()">
+  <div class="modal-dialog modal-dialog-custom" role="dialog" aria-modal="true" aria-labelledby="modalLabel" (click)="$event.stopPropagation()">
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Nova conversa</h5>
+        <button type="button" class="btn-fechar" aria-label="Fechar modal" (click)="fecharModal2()">
+          <i class="bi bi-x-circle"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="chat">Titulo da Conversa</label>
+          <input id="chat"  [(ngModel)]="newTitle" type="text" placeholder="Digite o titulo" />
+        </div>
+
+
+        <div class="modal-footer centralizada">
+          <button class="btn-salvar" (click)="createChat()">
+            <i class="bi bi-floppy"></i> Criar
+          </button>
+        </div>
     </div>
   </div>
 </div>
