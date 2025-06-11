@@ -22,13 +22,19 @@ export class HeaderComponent {
   constructor(private router: Router) {}
   
   onFocusOut(event: FocusEvent): void {
-  const relatedTarget = event.relatedTarget as HTMLElement;
+    const relatedTarget = event.relatedTarget as HTMLElement;
 
-  // Só fecha se o novo foco estiver fora do profile-wrapper
-  if (!relatedTarget || !relatedTarget.closest('.profile-wrapper')) {
-    this.closeProfile();
+    // Só fecha se o novo foco estiver fora do profile-wrapper
+    if (!relatedTarget || !relatedTarget.closest('.profile-wrapper')) {
+      this.closeProfile();
+    }
   }
-}
+
+
+  goHome() {
+    console.log("estou funcionando!")
+    window.location.reload()
+  }
 
   decode() {
     const token = localStorage.getItem('authToken');

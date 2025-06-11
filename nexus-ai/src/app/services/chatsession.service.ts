@@ -11,7 +11,7 @@ export interface ChatMessage {
   id?: number ;
   role?: string;
   llmName?: string;
-  content?: string;
+  content?: string | null;
   timestamp?: Date;
 }
 

@@ -2,8 +2,7 @@ header {
     height:5rem;
 
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
     align-self: center;
@@ -11,6 +10,8 @@ header {
     vertical-align: center;
 
     padding: 0 1.5rem;
+
+    background-color: #29292E;
 }
 
 
@@ -72,4 +73,13 @@ button {
 button:hover, button:active {
     background-color: #ef7b00; /* Bootstrap primary color */
     color: #fff; /* White text on hover */
+}
+
+h1 {
+    color: #ffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.highlight {
+    color: #ef7b00;
 }

@@ -1,12 +1,15 @@
 <header>
-    <p>Modelo IA usado</p>
-    <div class="profile-wrapper" (click)="toggleProfile()" tabindex="0" (focusout)="onFocusOut($event)">
+  <div (click)="goHome()">
+    <h1 >NEXUS<span class="highlight">AI</span></h1>
+
+  </div>
     <!-- <div class="profile-wrapper" (click)="toggleProfile()" tabindex="0" (blur)="closeProfile()"> -->
+    <!-- <div class="profile-wrapper" (click)="toggleProfile()" tabindex="0" (focusout)="onFocusOut($event)">
         <img src="https://cdn.vectorstock.com/i/500p/97/32/male-profile-silhouette-vector-2139732.jpg" alt="Profile Picture">
         <div class="profile-name" [class.expanded]="isExpanded">
           <p>{{ decoded.username }}</p>
           <p>{{ decoded.email }}</p>
           <button class="btn btn-primary" (click)="logout(); $event.stopPropagation()" >Sair</button>
         </div>
-  </div>
+    </div> -->
 </header>

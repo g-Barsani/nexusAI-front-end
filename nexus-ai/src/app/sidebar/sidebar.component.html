@@ -4,20 +4,25 @@
 
 <div class="sidebar" [class.expanded]="isExpanded">
   <ul>
-    <li (click)="abrirModal2()">
+    <li  (click)="abrirModal2()">
       <i class="bi bi-plus" [class.expanded]="isExpanded">
       </i>
-      <span *ngIf="isExpanded">Nova conversa</span>
+      <span *ngIf="isExpanded">Criar conversa</span>
     </li>
+    <ng-container >
+      <li  *ngFor="let chat of chatSessionList;" (click)="onItemClick(chat.id!)">
+        <span *ngIf="isExpanded" class="text-truncate-container" data-toggle="tooltip" data-placement="top" title="{{ chat.sessionTitle }}">
+          <span >{{ chat.sessionTitle }}</span>
+        </span>
+        <button type="button" *ngIf="isExpanded" (click)="delete(chat.id!);  $event.stopPropagation()" class="btn d-flex justify-content-center align-items-center" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <button type="button" *ngIf="!isExpanded" (click)="onItemClick(chat.id!);  $event.stopPropagation()" class="btn d-flex justify-content-center align-items-center" >
+          {{chat.id}}
+        </button>
+      </li>  
 
-    <li *ngFor="let chat of chatSessionList;" (click)="onItemClick(chat.id!)">
-      <span>
-        <span *ngIf="isExpanded">{{ chat.sessionTitle }}</span>
-      </span>
-      <button type="button" (click)="delete(chat.id!);  $event.stopPropagation()" class="btn d-flex justify-content-center align-items-center" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </li>  
+    </ng-container>
   </ul>
 
   <div class="settings-button" [class.expanded]="isExpanded">
@@ -32,30 +37,24 @@
   <div class="modal-dialog modal-dialog-custom" role="dialog" aria-modal="true" aria-labelledby="modalLabel" (click)="$event.stopPropagation()">
     <div class="modal-content custom-modal">
       <div class="modal-header">
-        <div class="icone-perfil">
-          <i class="bi bi-person-circle"></i>
-        </div>
         <h5 class="modal-title" id="modalLabel">NexusAI</h5>
-        <button type="button" class="btn-fechar" aria-label="Fechar modal" (click)="fecharModal()">
-          <i class="bi bi-x-circle"></i>
+        
+      </div>
+
+      <div class="modal-body d-flex flex-column justify-content-center align-items-center" >
+        <div class="fs-3 form-group d-flex flex-column justify-content-center align-items-center">
+          <label for="email">{{decoded.username}}</label>
+
+          <label for="senha">{{decoded.email}}</label>
+        </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center align-items-center ">
+        <button class="btn-salvar  bg-danger mx-2" (click)="logout()">
+             Logout
         </button>
-      </div>
-
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="Digite seu email" />
-        </div>
-
-        <div class="form-group">
-          <label for="senha">Senha</label>
-          <input id="senha" type="password" placeholder="Digite sua senha" />
-        </div>
-      </div>
-
-      <div class="modal-footer centralizada">
-        <button class="btn-salvar" (click)="salvar()">
-          <i class="bi bi-floppy"></i> Salvar
+        <button class="btn-salvar mx-2" (click)="fecharModal()">
+             Fechar
         </button>
       </div>
     </div>
@@ -68,9 +67,9 @@
     <div class="modal-content custom-modal">
       <div class="modal-header">
         <h5 class="modal-title" id="modalLabel">Nova conversa</h5>
-        <button type="button" class="btn-fechar" aria-label="Fechar modal" (click)="fecharModal2()">
+        <!-- <button type="button" class="btn-fechar" aria-label="Fechar modal" (click)="fecharModal2()">
           <i class="bi bi-x-circle"></i>
-        </button>
+        </button> -->
       </div>
 
       <div class="modal-body">

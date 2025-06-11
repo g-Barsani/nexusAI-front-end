@@ -1,10 +1,11 @@
 <div class="chat-container" [class.chat-active]="hasSentFirstMessage">
-  <div class="messages" #messagesContainer>
+
+  <div #messagesContainer class="messages" >
     <div *ngFor="let msg of messages; let isLast = last" [ngClass]="msg.role">
       <div *ngIf="isLast" #ultimaMensagem></div>
-      <ng-container>
+
         <img *ngIf="msg.role === 'assistant' && msg.llmName === 'meta-llama/llama-3.3-8b-instruct:free'"
-          src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
+          src="https://unpkg.com/@lobehub/icons-static-png@1.46.0/dark/meta-color.png"
           alt="assistant" />
         <img *ngIf="msg.role === 'assistant' && msg.llmName === 'deepseek/deepseek-r1-0528-qwen3-8b:free'"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s"
@@ -15,19 +16,23 @@
         <img *ngIf="msg.role === 'assistant' && msg.llmName === 'qwen/qwen3-8b:free'"
           src="https://unpkg.com/@lobehub/icons-static-png@latest/dark/qwen-color.png"
           alt="assistant" />
-        <span>{{ msg.content }}</span>
-
-      </ng-container>
+        <!-- <span [innerHTML]="msg.content | markdownKatex"></span> -->
+        <markdown katex [data]="msg.content"></markdown>
     </div>
+    <div *ngIf="isLoading"  class="assistant">
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Loading...
+    </div>
+
   </div>
 
-  <div class="input-container">
+  <div class="input-container py-5">
     <div class="top">
 
       <div class="d-flex align-items-center"> 
         <ng-container>
           <img class="assistant_img" *ngIf="selectedValue === 'meta-llama/llama-3.3-8b-instruct:free'"
-            src="https://cdn.pixabay.com/photo/2023/05/08/00/43/chatgpt-7977357_1280.png"
+            src="https://unpkg.com/@lobehub/icons-static-png@1.46.0/dark/meta-color.png"
             alt="assistant" />
           <img class="assistant_img" *ngIf="selectedValue === 'deepseek/deepseek-r1-0528-qwen3-8b:free'"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRPj6SSbTOghXAje90eXbT0KkfNiuhA1Fgrg&s"
@@ -54,19 +59,19 @@
 
 
 
-      <textarea [(ngModel)]="userInput" (keydown.enter)="sendMessage()" (input)="ajustarTextArea($event)"
-        placeholder="Pergunte alguma coisa..." rows="1"></textarea>
+      <textarea [(ngModel)]="userInput" (keydown.enter)="onKeydown($event)" required (keyup.enter)="sendMessage()" (input)="ajustarTextArea($event)"
+        placeholder="Olá {{decoded.username}}. Pergunte alguma coisa..." rows="1"></textarea>
 
       <button (click)="sendMessage()" [disabled]="!userInput || userInput.trim() === ''">
         <i class="bi bi-send-fill"></i>
       </button>
     </div>
 
-    <div class="bottom">
+    <!-- <div class="bottom">
       <label class="trademark">Criado por Meia Lua ao Quadrado ®</label>
       <button class="help" title="Precisa de ajuda? Clique aqui!">
         <i class="bi bi-question-circle"></i>
       </button>
-    </div>
+    </div> -->
   </div>
 </div>

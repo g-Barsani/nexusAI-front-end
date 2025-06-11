@@ -21,10 +21,7 @@ import { CommonModule } from '@angular/common';
 
 export class MainComponent {
   showBody = true;
-
   hideBody() {
   this.showBody = false;
-   console.log('hideBody called, showBody:', this.showBody); // Debug log
 }
-
 }

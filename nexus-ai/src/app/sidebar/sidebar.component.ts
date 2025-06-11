@@ -4,9 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EventEmitter } from '@angular/core';
 import { ChatSession, ChatSessionService } from '../services/chatsession.service';
-import { error } from 'console';
+import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
-
+interface CustomJwtPayload {
+    username?: string;
+    email?: string;
+  }
 
 
 @Component({
@@ -22,9 +26,11 @@ export class SidebarComponent {
   modalAberto2 = false;
   newTitle: string = '';
 
+  decoded: CustomJwtPayload = {}
+
   chatSessionList: Array<ChatSession> = [];
 
-  constructor(private _eref: ElementRef, private chasessionService: ChatSessionService) { }
+  constructor(private router: Router,private _eref: ElementRef, private chasessionService: ChatSessionService) { }
 
   // Listen for click events on the entire document
   @HostListener('document:click', ['$event'])
@@ -40,8 +46,8 @@ export class SidebarComponent {
 
 
   ngOnInit() {
-        this.getAllUserChat()
-
+    this.decode()
+    this.getAllUserChat()
   }
 
   getAllUserChat() {
@@ -85,7 +91,7 @@ export class SidebarComponent {
 
   abrirModal2() {
     this.modalAberto2 = true;
-    console.log("Modal 2 aberto :)");
+    console.log("Modal 2 aberto :) " + this.modalAberto2);
   }
   
     fecharModal2() {
@@ -97,7 +103,7 @@ export class SidebarComponent {
   }
 
   salvar() {
-    alert("Informações salvas com sucesso!");
+    //alert("Informações salvas com sucesso!");
     this.modalAberto = false;
   }
 
@@ -115,5 +121,25 @@ export class SidebarComponent {
     })
     
   }
+
+  decode() {
+    const token = localStorage.getItem('authToken');
+
+    if (token) {
+      this.decoded.email = jwtDecode<CustomJwtPayload>(token).email
+      this.decoded.username = jwtDecode<CustomJwtPayload>(token).username
+    }
+  }
+
+  logout(){
+    localStorage.clear()
+    this.irParaLogin()
+  }
+
+
+  irParaLogin() {
+    this.router.navigate(['login']);
+  }
+  
 }
 

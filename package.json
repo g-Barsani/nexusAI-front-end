@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "katex": "^0.16.22",
+    "marked": "^15.0.12",
+    "mermaid": "^11.6.0",
+    "ngx-markdown": "^20.0.0",
+    "prismjs": "^1.30.0"
+  }
+}

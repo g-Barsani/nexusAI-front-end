@@ -17,7 +17,7 @@ export interface ChatBody{
 })
 export class ChatService {
 
-    private apiUrl = 'http://localhost:8080/';
+    private apiUrl = 'http://localhost:8080';
 
     constructor(private http: HttpClient) { }
 
@@ -26,6 +26,6 @@ export class ChatService {
     }
 
     chatContext(body: ChatBody, idSession?:  number){
-        return this.http.post(`${this.apiUrl}/chatSessions/${idSession}/chatcontext`, body);
+        return this.http.post(`${this.apiUrl}chatSessions/${idSession}/chatcontext`, body);
     }
 }
